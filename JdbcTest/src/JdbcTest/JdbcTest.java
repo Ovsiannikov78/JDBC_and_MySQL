@@ -1,3 +1,5 @@
+package JdbcTest;
+
 import java.sql.*;
 
 public class JdbcTest {
@@ -7,7 +9,7 @@ public class JdbcTest {
 		Connection myConn = null;
 		Statement myStmt = null;
 		ResultSet myRs = null;
-		
+
 		try {
 			// 1. Get a connection to database
 			myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo?useSSL=false", "student_for_practice", "student");
@@ -24,19 +26,17 @@ public class JdbcTest {
 			while (myRs.next()) {
 				System.out.println(myRs.getString("last_name") + ", " + myRs.getString("first_name"));
 			}
-		}
-		catch (Exception exc) {
+		} catch (Exception exc) {
 			exc.printStackTrace();
-		}
-		finally {
+		} finally {
 			if (myRs != null) {
 				myRs.close();
 			}
-			
+
 			if (myStmt != null) {
 				myStmt.close();
 			}
-			
+
 			if (myConn != null) {
 				myConn.close();
 			}
